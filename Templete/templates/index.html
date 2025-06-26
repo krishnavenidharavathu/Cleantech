@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CleanTech: Transforming Waste Management</title>
+  <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #2e7d32;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      color: white;
+    }
+
+    .navbar .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .navbar a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url("{{ url_for('static', filename='assets/images/hero-bg.jpg') }}") no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 900px;
+    }
+
+    .hero-overlay h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .hero-overlay p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      background-color: transparent;
+      border: 2px solid white;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: white;
+      color: #2e7d32;
+    }
+
+    /* Section Containers */
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #2e7d32;
+      text-align: center;
+    }
+
+    /* Form */
+    input[type="file"] {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    button {
+      background-color: #43a047;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #2e7d32;
+    }
+
+    .result {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #1b5e20;
+    }
+
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">CleanTech</div>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#predict">Predict</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- Home Section -->
+  <section class="hero" id="home">
+    <div class="hero-overlay">
+      <h2>Welcome to <strong>municipal waste classification</strong></h2>
+      <p>This platform allows you to upload images of waste materials, and our advanced machine learning model will classify them into appropriate categories. Proper waste classification helps in efficient recycling and waste management, making our environment cleaner and more sustainable.</p>
+      <a href="#predict" class="cta-button">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Predict Section -->
+  <section class="container" id="predict">
+    <h1>Waste Classification</h1>
+    <p>Upload an image to classify it as Biodegradable, Recyclable, or Trash.</p>
+
+    <form action="{{ url_for('predict_waste') }}" method="POST" enctype="multipart/form-data">
+      <input type="file" name="pc_image" accept="image/*" required />
+      <button type="submit">Predict Waste Type</button>
+    </form>
+
+    {% if predict %}
+    <div class="result">
+      <strong>Prediction:</strong> {{ predict }}
+    </div>
+    {% endif %}
+
+    {% if uploaded_image %}
+    <img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" alt="Uploaded Image" />
+    {% endif %}
+  </section>
+
+  <!-- About Section -->
+  <section class="container" id="about">
+    <h2>About CleanTech</h2>
+    <p>CleanTech uses AI and transfer learning to identify waste categories efficiently. This helps reduce landfill waste, improve recycling efforts, and promote environmental sustainability.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container" id="contact">
+    <h2>Contact</h2>
+    <p>For queries or collaborations, please reach out to <strong>contact@cleantech.org</strong>.</p>
+  </section>
+
+</body>
+</html>

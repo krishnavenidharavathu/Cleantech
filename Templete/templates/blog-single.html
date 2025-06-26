@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanTech Blog - Single Post</title>
+    <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .navbar {
+            background-color: #343a40;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        .navbar a:hover {
+            background-color: #495057;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .blog-post-single h1 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .blog-meta-single {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        .blog-content {
+            margin-bottom: 30px;
+        }
+        .back-to-blog {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .back-to-blog:hover {
+            background-color: #5a6268;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #6c757d;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CleanTech Blog</h1>
+    </div>
+
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('blog') }}">Blog</a>
+        </div>
+
+    <div class="container">
+        <div class="blog-post-single">
+            <h1>The Future of Waste: AI in Recycling (Post ID: {{ post_id }})</h1>
+            <div class="blog-meta-single">Posted on June 15, 2025 by Admin</div>
+
+            <div class="blog-content">
+                <p>In an era where environmental concerns are paramount, the efficient management of waste has become a critical challenge. Traditional methods of waste sorting are often manual, labor-intensive, and prone to human error, leading to inefficiencies in recycling processes.</p>
+
+                <p>This is where Artificial Intelligence (AI), particularly deep learning and transfer learning, steps in to revolutionize the municipal waste management sector. At CleanTech, we are harnessing the power of advanced deep learning models, pre-trained on extensive datasets, to enhance the accuracy and efficiency of waste classification.</p>
+
+                <p>Our intelligent system is capable of automatically identifying and categorizing different types of municipal waste from images. Imagine cameras installed along conveyor belts in recycling centers, capturing real-time images of mixed waste. Our system, leveraging transfer learning from models like VGG16, can quickly and accurately distinguish between recyclables, organic waste, and general trash.</p>
+
+                <h3>Impact in Smart Cities</h3>
+                <p>Beyond recycling centers, this technology can be deployed in smart city initiatives. Public waste bins equipped with cameras can scan disposed waste in real-time, guiding citizens on proper segregation or even triggering alerts for incorrect disposal. This fosters better habits at the source, which is crucial for maintaining cleanliness and sustainability.</p>
+
+                <h3>Industrial Applications</h3>
+                <p>Factories, too, can benefit immensely. Industrial waste segregation is vital for environmental compliance and efficient material recovery. Our system can continuously monitor waste disposal areas, classifying materials like metals, plastics, and hazardous waste, ensuring they are directed to the appropriate channels. This proactive approach helps factories reduce their environmental footprint and improve resource efficiency.</p>
+
+                <p>By automating waste classification, we can significantly reduce the time and cost associated with manual sorting, increase the purity of recycled materials, and contribute to a cleaner, more sustainable future for our planet. CleanTech is committed to pushing the boundaries of what's possible in waste management through intelligent, AI-powered solutions.</p>
+            </div>
+
+            <a href="{{ url_for('blog') }}" class="back-to-blog">&larr; Back to Blog</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 CleanTech. All rights reserved.
+    </div>
+</body>
+</html>
